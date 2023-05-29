@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/webfortext/static/css/main.9c35581a.css",
+    "main.js": "/webfortext/static/js/main.ffd10125.js",
+    "static/js/787.8a385554.chunk.js": "/webfortext/static/js/787.8a385554.chunk.js",
+    "index.html": "/webfortext/index.html",
+    "main.9c35581a.css.map": "/webfortext/static/css/main.9c35581a.css.map",
+    "main.ffd10125.js.map": "/webfortext/static/js/main.ffd10125.js.map",
+    "787.8a385554.chunk.js.map": "/webfortext/static/js/787.8a385554.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9c35581a.css",
+    "static/js/main.ffd10125.js"
+  ]
+}
