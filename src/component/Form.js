@@ -60,12 +60,12 @@ function Form(props) {
                 <textarea className="form-control border-secondary mt-3" value={text} onChange={handleUp} id="textBox" rows="6" style={{ backgroundColor: props.mode === 'dark' ? '#1c1c1c6b' : 'white', color: props.mode === 'dark' ? 'white' : '#020202' }}></textarea>
                 <p className='mx-1'>{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} words and {text.length} characters.</p>
 
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={copyText}>Copy Text</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={upCase}>Upper Case</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={loCase}>Lower Case</button>
-                <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={clear}>Clear</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={speak}>Speak</button>
-                <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={copyText}>Copy Text</button>
                 <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={removeSpace}>Remove extra space</button>
+                <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={clear}>Clear</button>
 
                 <h3 className="mt-4">Preview Text...</h3>
                 <div className="border border-secondary p-2 rounded" style={{ backgroundColor: props.mode === 'dark' ? '#1c1c1c6b' : 'white', color: props.mode === 'dark' ? 'white' : '#020202' }}>
