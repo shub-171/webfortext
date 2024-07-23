@@ -69,7 +69,18 @@ nav{
   width: 24px;
   height: 24px;
 }
-
+.edit-buttons{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.edit-buttons button{
+  text-transform: capitalize;
+}
+.edit-buttons ul.dropdown-menu{
+  min-width: 100%;
+}
 /* .switch:hover */.sun svg {
   animation: rotate 15s linear infinite;
 }
