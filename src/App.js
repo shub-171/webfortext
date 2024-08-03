@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from "@vercel/analytics/react"
 import Navbar from './component/Navbar';
 import Alert from './component/Alert';
 import Form from './component/Form';
