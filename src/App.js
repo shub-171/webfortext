@@ -41,6 +41,7 @@ function App() {
       <Form mode={mode} />
       <FeaturesSec mode={mode} />
       <Footer mode={mode} />
+      <Analytics />
     </>
   );
 }
