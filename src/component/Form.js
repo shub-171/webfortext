@@ -41,16 +41,16 @@ function Form(props) {
 
     //Remove extra spaces
     const removeSpace = () => {
-        let newText = text.split(/[ ]+/);
-        setText(newText.join(" "));
-    }
+        let newText = text.split(/\n/).map(line => line.trim().replace(/\s+/g, " ")).join("\n");
+        setText(newText);
+    };
 
     //capitalize text
     const capitalize = () => {
         const capitalizedText = text.toLowerCase()
-            .split(' ')
+            .split(/(\s+)/)
             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
+            .join('');
         setText(capitalizedText);
     };
 
