@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import { LoremIpsum } from 'lorem-ipsum';
 
 function Form(props) {
-
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
             max: 10,
@@ -14,38 +13,40 @@ function Form(props) {
         }
     });
 
-    //Upper case
+    const [text, setText] = useState("");
+
+    // Upper case
     const upCase = () => {
         let newText = text.toUpperCase();
-        setText(newText)
+        setText(newText);
     }
 
-    //Lower case
+    // Lower case
     const loCase = () => {
         let newText = text.toLowerCase();
-        setText(newText)
+        setText(newText);
     }
 
-    //clear text
+    // Clear text
     const clear = () => {
         let newText = "";
-        setText(newText)
+        setText(newText);
     }
 
-    //Copy text
+    // Copy text
     const copyText = () => {
         var mytext = document.getElementById("textBox");
         mytext.select();
         navigator.clipboard.writeText(mytext.value);
     }
 
-    //Remove extra spaces
+    // Remove extra spaces
     const removeSpace = () => {
         let newText = text.split(/\n/).map(line => line.trim().replace(/\s+/g, " ")).join("\n");
         setText(newText);
     };
 
-    //capitalize text
+    // Capitalize text
     const capitalize = () => {
         const capitalizedText = text.toLowerCase()
             .split(/(\s+)/)
@@ -54,7 +55,7 @@ function Form(props) {
         setText(capitalizedText);
     };
 
-    //String to slug
+    // String to slug
     const createSlug = () => {
         let slug = text
             .split('\n')
@@ -71,10 +72,10 @@ function Form(props) {
         setText(slug);
     };
 
-    // remove extra lines
+    // Remove extra lines
     const removeEmptyLines = () => {
         let newText = text.split('\n').filter(line => line.trim() !== '').join('\n');
-        setText(newText)
+        setText(newText);
     }
 
     // Add line number
@@ -92,18 +93,31 @@ function Form(props) {
         setText(randomText);
     };
 
-
     const handleUp = (event) => {
-        setText(event.target.value)
+        setText(event.target.value);
     }
 
-    const [text, setText] = useState("");
+    // Ensure the text area is focused when the component is mounted
+    useEffect(() => {
+        document.getElementById('textBox')?.focus();
+    }, []);
 
     return (
         <>
             <div className="my-5 mt-3 container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>Type your text here to transform the way you want!!</h1>
-                <textarea className="form-control border-secondary mt-3" value={text} onChange={handleUp} id="textBox" rows="12" style={{ backgroundColor: props.mode === 'dark' ? '#1c1c1c6b' : 'white', color: props.mode === 'dark' ? 'white' : '#020202' }}></textarea>
+                <textarea 
+                    className="form-control border-secondary mt-3" 
+                    value={text} 
+                    onChange={handleUp} 
+                    id="textBox" 
+                    rows="12" 
+                    style={{
+                        backgroundColor: props.mode === 'dark' ? '#1c1c1c6b' : 'white',
+                        color: props.mode === 'dark' ? 'white' : '#020202',
+                    }} 
+                    autoFocus
+                ></textarea>
                 <p className='mx-1'>{text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} words and {text.length} characters.</p>
                 <div className='edit-buttons'>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={copyText}>Copy</button>
@@ -120,9 +134,6 @@ function Form(props) {
                         </ul>
                     </div>
 
-
-
-
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={removeSpace}>Remove Extra Space</button>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={removeEmptyLines}>Remove Empty Lines</button>
                     <button disabled={text.length === 0} className="btn btn-primary mx-1 mt-2" onClick={addLineNumber}>Add line number</button>
@@ -133,7 +144,7 @@ function Form(props) {
 
             <hr className='container' style={{ color: props.mode === 'dark' ? '#777777' : '#1c1c1c' }} />
         </>
-    )
+    );
 }
 
-export default Form
+export default Form;
